@@ -1,66 +1,34 @@
-## Foundry
+# Foundry Upgradeable Smart Contracts
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A UUPS upgradeable smart contract system built with Foundry and OpenZeppelin. Includes proxy deployment, implementation upgrades, and live deployment on Sepolia testnet.
 
-Foundry consists of:
+## Contracts
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **BoxV1** - Initial implementation with getNumber() and version()
+- **BoxV2** - Upgraded implementation adding setNumber()
+- **ERC1967Proxy** - Proxy contract holding all state and permanent address
 
-## Documentation
+## Deployed on Sepolia
 
-https://book.getfoundry.sh/
+| Contract | Address |
+|----------|---------|
+| BoxV1 | 0x81dCC96264daF7C8F5D8Ee48Ee4eba7Ed2Da9B65 |
+| ERC1967Proxy | 0x7E4573269075aFc77760728ab6C4AE8993C92621 |
+| BoxV2 | 0x7B84F5484a18aa7e95691276b31C048A2bDDe77F |
 
-## Usage
+## Getting Started
 
-### Build
+Install dependencies: make install
+Build: make build
+Test: make test
+Deploy: make deploy ARGS="--network sepolia"
+Upgrade: make upgrade ARGS="--network sepolia"
 
-```shell
-$ forge build
-```
+## Environment Variables
 
-### Test
+Create a .env file with:
+SEPOLIA_RPC_URL=your_rpc_url
+ETHERSCAN_API_KEY=your_etherscan_api_key
 
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## License
+MIT
